@@ -1,0 +1,525 @@
+﻿@{
+   Layout = "~/Views/Shared/_Index_Layout.cshtml";
+}
+<link href="~/Content/jquery-image-cut/dist/cropper.css" rel="stylesheet" />
+<link href="~/Content/jquery-image-cut/main.css" rel="stylesheet" />
+
+<script src="~/Content/jquery-image-cut/dist/cropper.js"></script>
+<script src="~/ViewScript/UserInfo.js"></script>
+<div id="loading" style="display: none;">
+   <img alt="数据正在加载中..." src="~/Content/images/loading02.gif" />
+</div>
+<div data-options="region:'center'" style="overflow: hidden;">
+   <!-------------------------------详细信息展示表格----------------------------------->
+   <table id="grid" title="资料管理" iconcls="icon-view"></table>
+   <div id="divtoolbar" style="padding: 5px;">
+      <input id="btnSearch" menu="#search_menu" style="width: 300px" />
+      <div id="search_menu" style="width: 300px">
+         <div name="NAME">姓名</div>
+         <div name="SEX">性别</div>
+          <div name="UserName">用户名</div>
+      </div>
+   </div>
+</div>
+<!--设置添加的弹出层-->
+<div id="AddDialog" class="easyui-dialog" style="width: 650px; padding: 1px; height:300px;" closed="true" resizable="true" modal="true" data-options="iconCls: 'icon-add',buttons: '#dlgAdd-buttons'">
+   <form id="addForm" method="post" novalidate="novalidate">
+      <div class="talbe_border">
+         <table id="tblAdd" border="0" cellpadding="0" cellspacing="0" class="talbe_list">
+            <tr>
+               <td class="left1">姓名</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtNAME" name="NAME" data-options="required:true" style="width:148px;" />
+               </td>
+               <td class="left1">性别</td>
+               <td class="left2">
+                   <select id="txtSEX" name="SEX" class="easyui-combobox" data-options="required:true,editable:false" style="width:148px;">
+                       <option value="男">男</option>
+                       <option>女</option>
+                   </select>
+                   @*<input type="text" class="easyui-validatebox" id="txtSEX" name="SEX" data-options="required:true" style="width:148px;" />*@
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">出生日期</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtDATA" name="DATA" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">籍贯</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtPLACE" name="PLACE"  style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">民族</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtNATION" name="NATION" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">身高</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtHEIGHT" name="HEIGHT"  style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">婚史</td>
+               <td class="left2"  colspan="3">
+                        <input type="text" class="easyui-validatebox" id="txtHISTORY" name="HISTORY" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">学历</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtEDUCATION" name="EDUCATION" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">毕业学校</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtSCHOOL" name="SCHOOL" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">参加工作时间</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtWORKT" name="WORKT" data-options="required:true" style="width:148px;"/>
+               </td>
+                <td class="left1">手机号码</td>
+                              <td class="left2">
+                                       <input type="text" class="easyui-validatebox" id="txtPHONE" name="PHONE" style="width:148px;"/>
+                              </td>
+            <tr>
+               <td class="left1">现居住地</td>
+               <td class="left2" colspan="3">
+                        <input type="text" class="easyui-validatebox" id="txtADDRESS" name="ADDRESS"  style="width:28.5rem;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">工作单位及职务</td>
+               <td class="left2" colspan="3">
+                        <input type="text" class="easyui-validatebox" id="txtWORKPLACE" name="WORKPLACE" data-options="required:true" style="width:28.5rem;"/>
+               </td>
+
+            </tr>
+            <tr>
+               <td class="left1">本人兴趣爱好</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtINTEREST" name="INTEREST" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方身高</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOHEIGHT" name="OHEIGHT" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方职业</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOWORK" name="OWORK" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方爱好</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOINTEREST" name="OINTEREST" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方特长</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOSTRENGTH" name="OSTRENGTH" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">最小年龄</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtMIN" name="MIN" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">最大年龄</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtMAX" name="MAX" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方工作所在地</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOWORKPLACE" name="OWORKPLACE" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方家庭情况</td>
+               <td class="left2"colspan="3">
+                        <input type="text" class="easyui-validatebox" id="txtFAMILY" name="FAMILY" data-options="required:true" style="width:28.5rem;"/>
+               </td>
+            <tr>
+               <td bgcolor="#F0F7FD" colspan="4" class="btttonCenter">
+                
+               </td>
+            </tr>
+         </table>
+      </div>
+   </form>
+</div>
+
+<div id="dlgAdd-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAdd" iconcls="icon-ok">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#AddDialog').dialog('close')">关闭</a>
+</div>
+
+
+<!--设置修改的弹出层-->
+<div id="UpdateDialog" class="easyui-dialog" style="width: 650px; padding: 1px;height:300px;" closed="true" resizable="true" modal="true" data-options="iconCls: 'icon-edit',buttons: '#dlgUpdate-buttons'">
+   <form id="updateForm" method="post" novalidate="novalidate">
+      <div class="talbe_border">
+         <table id="tblUpdate" border="0" cellpadding="0" cellspacing="0" class="talbe_list">
+            <tr>
+               <td class="left1">姓名</td>
+               <td class="left2">
+                   <input type="hidden" id="txtUIDUpdate" name="UID" />
+                        <input type="text" class="easyui-validatebox" id="txtNAMEUpdate" name="NAME" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">性别</td>
+               <td class="left2">
+                   <select   id="txtSEXUpdate" name="SEX" class="easyui-combobox" data-options="required:true,editable:false" style="width:148px;">
+                       <option value="男">男</option>
+                       <option>女</option>
+                   </select>
+                        @*<input type="text" class="easyui-validatebox" id="txtSEXUpdate" name="SEX" data-options="required:true" style="width:148px;"/>*@
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">出生日期</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtDATAUpdate" name="DATA" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">籍贯</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtPLACEUpdate" name="PLACE" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">民族</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtNATIONUpdate" name="NATION" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">身高</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtHEIGHTUpdate" name="HEIGHT" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+              
+               <td class="left1">婚史</td>
+                <td class="left2" colspan="3">
+                    <input type="text" class="easyui-validatebox" id="txtHISTORYUpdate" name="HISTORY" data-options="required:true" style="width:148px;" />
+                </td>
+            </tr>
+            <tr>
+               <td class="left1">学历</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtEDUCATIONUpdate" name="EDUCATION" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">毕业学校</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtSCHOOLUpdate" name="SCHOOL" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">手机号码</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtPHONEUpdate" name="PHONE" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">参加工作时间</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtWORKTUpdate" name="WORKT" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+                <td class="left1">现居住地</td>
+                              <td class="left2" colspan="3">
+                                       <input type="text" class="easyui-validatebox" id="txtADDRESSUpdate" name="ADDRESS" data-options="required:true" style="width:28.5rem;"/>
+                              </td>
+            </tr>
+            <tr>
+               <td class="left1">工作单位及职务</td>
+                              <td class="left2" colspan="3">
+                                       <input type="text" class="easyui-validatebox" id="txtWORKPLACEUpdate" name="WORKPLACE" data-options="required:true" style="width:28.5rem;"/>
+                              </td>
+            </tr>
+            <tr>
+               <td class="left1">本人兴趣爱好</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtINTERESTUpdate" name="INTEREST" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方身高</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOHEIGHTUpdate" name="OHEIGHT" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方职业</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOWORKUpdate" name="OWORK" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方爱好</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOINTERESTUpdate" name="OINTEREST" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方特长</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOSTRENGTHUpdate" name="OSTRENGTH" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">最小年龄</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtMINUpdate" name="MIN" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">最大年龄</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtMAXUpdate" name="MAX" data-options="required:true" style="width:148px;"/>
+               </td>
+               <td class="left1">对方工作地</td>
+               <td class="left2">
+                        <input type="text" class="easyui-validatebox" id="txtOWORKPLACEUpdate" name="OWORKPLACE" data-options="required:true" style="width:148px;"/>
+               </td>
+            </tr>
+            <tr>
+               <td class="left1">对方家庭情况</td>
+               <td class="left2" colspan="3">
+                        <input type="text" class="easyui-validatebox" id="txtFAMILYUpdate" name="FAMILY" data-options="required:true" style="width:28.5rem;"/>
+               </td>
+         </table>
+      </div>
+   </form>
+</div>
+
+<div id="dlgUpdate-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpdate" iconcls="icon-ok">确定</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#UpdateDialog').dialog('close')">关闭</a>
+</div>
+
+
+<!--设置详细信息的弹出层-->
+<div id="DetailDialog" class="easyui-dialog" style="width: 650px; height: 350px; padding: 1px" closed="true" resizable="true" modal="true" data-options="iconCls: 'icon-view',buttons: '#dlgDetail-buttons'">
+    <form id="detailForm" method="post" novalidate="novalidate">
+        <div class="talbe_border">
+            <table id="tblDetail" border="0" cellpadding="0" cellspacing="0" class="talbe_list">
+                <tr>
+                    <td class="left1">图片</td>
+                    <td class="left2" colspan="3">
+                        <img id="txtIMGDetail" style="width:150px;height:150px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">姓名</td>
+                    <td class="left2">
+                        <input type="text" name="NAME" id="txtNAMEDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">性别</td>
+                    <td class="left2">
+                        <input type="text" name="SEX" id="txtSEXDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">出生日期</td>
+                    <td class="left2">
+                        <input type="text" name="DATA" id="txtDATADetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">籍贯</td>
+                    <td class="left2">
+                        <input type="text" name="PLACE" id="txtPLACEDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">民族</td>
+                    <td class="left2">
+                        <input type="text" name="NATION" id="txtNATIONDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">身高</td>
+                    <td class="left2">
+                        <input type="text" name="HEIGHT" id="txtHEIGHTDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">婚史</td>
+                    <td class="left2" colspan="3">
+                        <input type="text" name="HISTORY" id="txtHISTORYDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">学历</td>
+                    <td class="left2">
+                        <input type="text" name="EDUCATION" id="txtEDUCATIONDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">毕业学校</td>
+                    <td class="left2">
+                        <input type="text" name="SCHOOL" id="txtSCHOOLDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">手机号码</td>
+                    <td class="left2">
+                        <input type="text" name="PHONE" id="txtPHONEDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">参加工作时间</td>
+                    <td class="left2">
+                        <input type="text" name="WORKT" id="txtWORKTDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                   <td class="left1">现居住地址</td>
+                   <td class="left2" colspan="3">
+                       <input type="text" name="ADDRESS" id="txtADDRESSDetail" readonly="true" style="width:29rem;" />
+                   </td>
+                </tr>
+                <tr>
+                    <td class="left1">工作单位及职务</td>
+                    <td class="left2" colspan="3">
+                        <input type="text" name="WORKPLACE" id="txtWORKPLACEDetail" readonly="true" style="width:29rem;" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="left1">本人兴趣爱好</td>
+                    <td class="left2">
+                        <input type="text" name="INTEREST" id="txtINTERESTDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">对方身高</td>
+                    <td class="left2">
+                        <input type="text" name="OHEIGHT" id="txtOHEIGHTDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">对方职业</td>
+                    <td class="left2">
+                        <input type="text" name="OWORK" id="txtOWORKDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">对方爱好</td>
+                    <td class="left2">
+                        <input type="text" name="OINTEREST" id="txtOINTERESTDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">对方特长</td>
+                    <td class="left2">
+                        <input type="text" name="OSTRENGTH" id="txtOSTRENGTHDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">最小年龄</td>
+                    <td class="left2">
+                        <input type="text" name="MIN" id="txtMINDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">最大年龄</td>
+                    <td class="left2">
+                        <input type="text" name="MAX" id="txtMAXDetail" readonly="true" style="width:148px;" />
+                    </td>
+                    <td class="left1">对方工作地</td>
+                    <td class="left2">
+                        <input type="text" name="OWORKPLACE" id="txtOWORKPLACEDetail" readonly="true" style="width:148px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left1">对方家庭情况</td>
+                    <td class="left2" colspan="3">
+                        <input type="text" name="FAMILY" id="txtFAMILYDetail" readonly="true" style="width:29rem;" />
+                    </td>
+            </table>
+        </div>
+    </form>
+</div>
+
+<div id="dlgDetail-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#DetailDialog').dialog('close')">关闭</a>
+</div>
+<div id="UpLoadPicDialog" class="easyui-dialog" style="width: 500px; padding: 1px;top:100px;" closed="true" resizable="false" modal="true" data-options="iconCls: 'icon-add'">
+    @*<table class="uploadPicTb">
+        <tr>
+            <td>
+                <input type="hidden" id="hidProID" value="" />
+                <div>
+                    <div id="fileQueue"></div>
+                    <input type="file" name="uploadify" id="uploadify" />
+                    <div style="float:left;">
+                        (格式:jpg/png/bmp/gif)
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr class="trZome" style="display:none;">
+            <td>
+                <div class="img-container">
+                    <img id="image" src="" alt="Picture" />
+                </div>
+            </td>
+        </tr>
+        <tr class="trZome" style="display:none;">
+            <td>
+                <div class="docs-preview clearfix">
+                    <div class="img-preview preview-lg"></div>
+
+                </div>
+            </td>
+        </tr>
+        <tr class="trZomeSmallPic" style="display:none;">
+            <td>
+                <div>
+                    <img id="imageSmall" alt="Picture" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#F0F7FD" colspan="4" class="btttonCenter">
+                <a href="javascript:void(0)" class="easyui-linkbutton" id="btnImageAdd" iconcls="icon-ok">确定</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript: $('#UpLoadPicDialog').dialog('close')">关闭</a>
+            </td>
+        </tr>
+    </table>*@
+    <table class="uploadPicTb">
+        <tr>
+            <td>
+                <input type="hidden" id="hidProID" value="" />
+                @*<input id="demo_input"  type="file" class="easyui-filebox" data-options="buttonText:'选择文件', accept:'application/vnd.ms-excel' " />*@
+                <input type="file" id="demo_input" accept="image/gif, image/jpeg,image/png,image/bmp,image/jpg">
+                <div id="demo_result"></div>
+                <script type="text/javascript">
+                    var result = document.getElementById("demo_result");
+                    var input = document.getElementById("demo_input");
+
+                    if (typeof FileReader === 'undefined') {
+                        result.innerHTML = "<p class='warn'>抱歉，你的浏览器不支持 FileReader<\/p>";
+                        input.setAttribute('disabled', 'disabled');
+                    } else {
+                        input.addEventListener('change', readFile, false);
+                    }
+
+
+                    function readFile() {
+                        var file = this.files[0];
+                        if (!/image\/\w+/.test(file.type)) {
+                            alert("请确保文件为图像类型");
+                            return false;
+                        }
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function (e) {
+                            $(".trZomeSmallPic").hide();
+                            $("#demo_result").show();
+
+                           // document.getElementById("imageSmall").src = this.result;
+                           result.innerHTML = '<img id="imgRedult"  style="width:350px;height:350px;" src="' + this.result + '" alt=""/>'
+                        }
+                    }
+                </script>
+            </td>
+        </tr>
+        <tr class="trZomeSmallPic" style="display:none;">
+            <td>
+                <div>
+                    <img id="imageSmall" style="width:350px;height:350px;"  alt="Picture" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#F0F7FD" class="btttonCenter">
+                <a href="javascript:void(0)" class="easyui-linkbutton" id="btnImageAdd" iconcls="icon-ok">确定</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript: $('#UpLoadPicDialog').dialog('close')">关闭</a>
+            </td>
+        </tr>
+    </table>
+</div>

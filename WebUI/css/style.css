@@ -1,0 +1,17 @@
+.topnav{
+   background: #2a6496;
+    color:#ffffff;
+}
+.border-bottom{
+    border-bottom: #ccc 1px solid;
+    padding-bottom: 0.5rem;
+}
+.margin-bottom{
+    margin-bottom: 1.2rem;
+}
+.margin-left{
+    margin-left:1rem;
+}
+.pic img{
+    max-height: 386px;
+}

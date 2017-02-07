@@ -1,0 +1,23 @@
+
+<nav class="navbar navbar-default topnav" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button id="backBut" class="btn btn-default navbar-btn margin-left" onclick="history.go(-1);">返回</button>
+        </div>
+    </div>
+</nav>
+
+<div id="form-views" ui-view></div>
+
+<div class="btn-group btn-group-justified navbar-fixed-bottom">
+    <div class="btn-group">
+        <a ui-sref-active="active" ui-sref=".usergrid" class="btn btn-primary">查询列表</a>
+    </div>
+    <div class="btn-group">
+        <a ui-sref-active="active" ui-sref=".user" class="btn btn-primary" role="button">信息提交</a>
+    </div>
+    <div class="btn-group">
+        <a ui-sref-active="active" ui-sref=".myusergrid" class="btn btn-primary" role="button">我的提交</a>
+    </div>
+</div>
+

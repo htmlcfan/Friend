@@ -1,0 +1,205 @@
+
+
+<div class="bg-light lter b-b wrapper-md container">
+    <h1 class="m-n font-thin h3">信息录入</h1>
+</div>
+<div class="wrapper-md container">
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">
+            个人信息表
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" ng-submit="processForm()">
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">本人生活照</label>
+                    <div class="col-sm-3">
+                        <input type="file" id="fileInput" ng-hide="true" ngf-select ng-model="file" name="file" ngf-pattern="'image/*" accept="image/*" />
+                    </div>
+                    <div class="col-sm-6 myimg">
+                        <img ng-src="{{myImage}}" onclick="$('#fileInput').click();" style="width: 200px; height: 200px;" class="img-responsive" />
+                    </div>
+                    <!--<button class="btn btn-primary" ng-click="submitimg()">上传</button>-->
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.NAME" required/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">性别</label>
+                    <div class="col-sm-10" >
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="男" ng-model="form.SEX" checked="checked" /> 男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="女" ng-model="form.SEX"> 女
+                        </label>
+                    </div >
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in" ></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">出生年月</label>
+                    <div class="col-sm-10">
+                        <!--<input type="text" class="form-control" placeholder="YYYY-MM-DD" ng-model="form.DATA" ng-pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/" required >-->
+                        <input type="text" class="form-control"   ng-model="form.DATA"   required >
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">籍贯</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.PLACE" required/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">民族</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.NATION">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">身高</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" placeholder="单位（米）" ng-model="form.HEIGHT" required />
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">婚史</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.HISTORY" required />
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">学历</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.EDUCATION">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">毕业学校</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.SCHOOL">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">现居住地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.ADDRESS">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">参加工作时间</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.WORKT">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">现工作单位及职务</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.WORKPLACE">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                        <label class="col-sm-2 control-label">联系方式及电话</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.PHONE" required>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" ng-click="formSubmit(this)">本人兴趣和爱好</label>
+                    <div class="col-sm-10">
+                        <textarea class="col-sm-10 form-control" rows="3" ng-model="form.INTEREST"></textarea>
+                    </div>
+                </div>
+              
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="font-bold divider border-bottom margin-bottom">
+                    对方要求和期望
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">身高</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.OHEIGHT">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职业</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.OWORK">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">爱好</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.OINTEREST">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">特长</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.OSTRENGTH">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最小年龄</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.MIN">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最大年龄</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.MAX">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">工作所在地</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.OWORKPLACE">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">家庭情况</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control rounded" ng-model="form.FAMILY">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group" >
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <!--<button type="button" class="btn btn-default">取消</button>-->
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+

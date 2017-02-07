@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="col-sm-12 col-xs-12 pic"><img class="img-thumbnail" src="{{detail.IMG}}"></div>
+    <div class="col-sm-12 col-xs-12 c">
+        <label for="" class="col-sm-2 col-xs-2 label label-primary">姓名</label>
+        <label for="" class="col-sm-10 col-xs-10">{{detail.NAME}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary">性别</label>
+        <label for="" class="col-sm-10 col-xs-10">{{detail.SEX}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="da">出生年月</label>
+        <label for="" class="col-sm-10 col-xs-10" ng-show="da">{{detail.DATA}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="pl">籍贯</label>
+        <label for="" class="col-sm-10 col-xs-10" ng-show="pl">{{detail.PLACE}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="na">民族</label>
+        <label for="" class="col-sm-10 col-xs-10" ng-show="na">{{detail.NATION}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="he">身高</label>
+        <label for="" class="col-sm-10 col-xs-10" ng-show="he">{{detail.HEIGHT}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="his">婚史</label>
+        <label for="" class="col-sm-10 col-xs-10" ng-show="his">{{detail.HISTORY}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="ed">学历</label>
+        <label for="" class="col-sm-10 col-xs-10 " ng-show="ed">{{detail.EDUCATION}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-4 col-xs-4 label label-primary" ng-show="school">毕业学校</label>
+        <label for="" class="col-sm-8 col-xs-8" ng-show="school">{{detail.SCHOOL}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-4 col-xs-4 label label-primary" ng-show="workt">参加工作时间</label>
+        <label for="" class="col-sm-8 col-xs-8" ng-show="workt">{{detail.WORKT}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-12 col-xs-10 label label-primary" ng-show="phone">联系方式</label>
+        <label for="" class="col-sm-12 col-xs-12" ng-show="phone">{{detail.PHONE}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <label for="" class="col-sm-12 col-xs-10 label label-primary" ng-show="add">现居住地址</label>
+        <label for="" class="col-sm-12 col-xs-12" ng-show="add">{{detail.ADDRESS}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-12 col-xs-10 label label-primary" ng-show="wp">现工作单位及职务</label>
+        <label for="" class="col-sm-12 col-xs-12" ng-show="wp">{{detail.WORKPLACE}}</label>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <label for="" class="col-sm-8 col-xs-10 label label-primary" ng-show="ins">本人兴趣和爱好</label>
+        <label for="" class="col-sm-12 col-xs-12" ng-show="ins">{{detail.INTEREST}}</label>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    对方要求和期望
+                </h3>
+            </div>
+            <div class="panel-body">
+                <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="oh">身高</label>
+                <label for="" class="col-sm-10 col-xs-10" ng-show="oh">{{detail.OHEIGHT}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="ow">职业</label>
+                <label for="" class="col-sm-10 col-xs-10" ng-show="ow">{{detail.OWORK}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="oi">爱好</label>
+                <label for="" class="col-sm-10 col-xs-10" ng-show="oi">{{detail.OINTEREST}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="os">特长</label>
+                <label for="" class="col-sm-10 col-xs-10" ng-show="os">{{detail.OSTRENGTH}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-4 col-xs-4 label label-primary" ng-show="min">最小年龄</label>
+                <label for="" class="col-sm-2 col-xs-2" ng-show="min">{{detail.MIN}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-4 col-xs-4 label label-primary" ng-show="max">最大年龄</label>
+                <label for="" class="col-sm-2 col-xs-2" ng-show="max">{{detail.MAX}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-2 col-xs-2 label label-primary" ng-show="w">工作所在地</label>
+                <label for="" class="col-sm-10 col-xs-10" ng-show="w">{{detail.OWORKPLACE}}</label>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <label for="" class="col-sm-12 col-xs-10 label label-primary" ng-show="f">家庭情况</label>
+                <label for="" class="col-sm-12 col-xs-12" ng-show="f">{{detail.FAMILY}}</label>
+            </div>
+        </div>
+    </div>
+</div>

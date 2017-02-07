@@ -1,0 +1,88 @@
+﻿body {
+    background-color: #e2e2e2;
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+
+/*加盟商搜索*/
+
+.divSearch {
+    background-color: #fff;
+    width: 100%;
+    font-weight bold;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+    .divSearch .btn-group {
+        text-align: center;
+        width: 100%;
+    }
+
+ 
+
+    .divSearch .tags .content {
+        padding: 15px;
+        min-height: 50px;
+    }
+
+    .divSearch .tags a {
+        -webkit-font-smoothing: antialiased;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        color: #333;
+        font-weight: 700;
+        display: inline-block;
+        font-size: .85em;
+        margin-bottom: .618em;
+        margin-right: 1em;
+        padding: 0 .7em;
+        line-height: 2em;
+        height: 2em;
+        text-decoration: none;
+    }
+
+    .divSearch .listspan {
+        margin: auto 0;
+        padding: 15px 15px;
+    }
+
+    .divSearch .listBar {
+        background-color: #e2e2e2;
+        padding: 3px 10px;
+        color: #999;
+        font-size:10px;
+    }
+
+    .divSearch .history .content {
+        padding: 15px;
+        min-height: 50px;
+    }
+
+    .divSearch  
+
+
+.filter {
+    background-color: #fff;
+    left: 0;
+    padding: 0 1em .5em;
+    padding-top: 10px;
+    right: 0;
+    top: 40px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+
+
+#headBar {
+    z-index:1000;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+
+
+ 

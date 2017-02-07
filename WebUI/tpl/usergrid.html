@@ -1,0 +1,293 @@
+<!--<div class="container-fluid" ng-app="myApp">
+    <div class="btn-group margin-bottom col-xs-4">
+        <button ui-sref-active="active" type="button" class="btn btn-primary" ng-click="sexFilter(1)">男</button>
+        <button ui-sref-active="active" type="button" class="btn btn-danger" ng-click="sexFilter(2)">女</button>
+    </div>
+    <div class="col-xs-8 col-sm-6 pull-right">
+        <div class="row">
+            <label class="col-sm-3 col-xs-3">最小年龄</label><input type="text" ng-model="min" class="col-sm-2 col-xs-3 pull-left"/>
+            <label class="col-sm-3 col-xs-3">最大年龄</label><input type="text" ng-model="max" class="col-sm-2 col-xs-3 pull-left"/>
+            <button class="btn btn-primary col-sm-12 col-xs-12 margin-bottom" ng-click="ageFilter()">筛选</button>
+        </div>
+
+    </div>
+    <table class="col-sm-12 table table-striped">
+        <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        </tr>
+        <tr ng-repeat="x in NAMES | filter:{SEX: sex}" data-id="{{x.UID}}" ng-click="href(this)" ng-show="x.if">
+            <td>{{ x.NAME }}</td>
+            <td>{{ x.SEX }}</td>
+            <td>{{x.DATA}}</td>
+        </tr>
+    </table>
+
+</div>-->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        color: #666;
+        font-size: 12px;
+        font-family: microsoft yahei;
+        background: #f8f8f8;
+        -o-user-select: none;
+        -o-touch-collout: none;
+        -o-tap-highlight-color: transparent;
+        -moz-select: none;
+        -moz-touch-collout: none;
+        -moz-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        -webkit-touch-collout: none;
+        -webkit-tap-highlight-color: transparent;
+        -ms-user-select: none;
+        -ms-touch-collout: none;
+        -ms-tap-highlight-color: transparent;
+        user-select: none;
+        touch-collout: none;
+        tap-highlight-color: transparent;
+    }
+
+    h1, h2, h3, ul, li, dl, dt, img {
+        list-style: none;
+        border: 0;
+    }
+
+    a {
+        text-decoration: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent; /* For some Androids */
+    }
+
+    h3 {
+        display: block;
+        font-size: 1.17em;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        font-weight: bold;
+        line-height: 15px;
+    }
+
+    i, em {
+        font-style: normal;
+    }
+
+    .BhH5_searchTj {
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .xhList_search {
+        overflow: hidden;
+    }
+
+        .xhList_search li {
+            margin: 0 0 10px;
+            font-family: microsoft yahei;
+            background: #fff;
+            border-top: 1px solid #e3e3e3;
+            border-bottom: 1px solid #e3e3e3;
+            overflow: hidden;
+        }
+
+            .xhList_search li dl {
+                padding: 10px 10px 15px;
+                border-bottom: 1px solid #e3e3e3;
+                clear: both;
+                overflow: hidden;
+            }
+
+        .xhList_search dl dt {
+            float: left;
+            width: 160px;
+        }
+
+        /*.xhList_search li dl dt img {
+            -moz-border-radius: 40px;
+            -webkit-border-radius: 40px;
+            border-radius: 40px;
+            border: 0;
+        }*/
+
+        .xhList_search li dl dd {
+            padding: 6px 0 0;
+            overflow: hidden;
+        }
+
+            .xhList_search li dl dd h3 a {
+                height: 24px;
+                color: #000;
+                font: 16px/24px microsoft yahei;
+                text-decoration: none;
+            }
+
+            .xhList_search li dl dd .text1 {
+                font: 12px/24px microsoft yahei;
+                color: #808080;
+                white-space: nowrap;
+                word-break: keep-all;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .xhList_search li dl dd h3 img {
+                position: relative;
+                top: 3px;
+                padding: 0 0 0 5px;
+            }
+
+            .xhList_search li dl dd .text2 {
+                font: 15px/24px microsoft yahei;
+                color: #444;
+                white-space: nowrap;
+                word-break: keep-all;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .xhList_search li dl dd .hobby {
+                padding: 8px 0 0;
+            }
+
+                .xhList_search li dl dd .hobby span {
+                    display: inline-block;
+                    height: 26px;
+                    margin: 0 5px 0 0;
+                    padding: 0 10px;
+                    color: #fff;
+                    font: 16px/26px microsoft yahei;
+                    -moz-border-radius: 13px;
+                    -webkit-border-radius: 13px;
+                    border-radius: 13px;
+                }
+
+                    .xhList_search li dl dd .hobby span.ho01 {
+                        background: #66ccff;
+                    }
+
+                    .xhList_search li dl dd .hobby span.ho02 {
+                        background: #ff9900;
+                    }
+
+        .xhList_search li .alist {
+            height: 36px;
+            padding: 7px 0 0;
+        }
+
+            .xhList_search li .alist a {
+                display: block;
+                float: left;
+                width: 33%;
+                height: 30px;
+                font: 15px/30px microsoft yahei;
+                text-align: center;
+                text-decoration: none;
+                border-right: 1px solid #efeff0;
+            }
+
+                .xhList_search li .alist a:nth-child(1) {
+                    color: #61b693;
+                }
+
+                .xhList_search li .alist a:nth-child(2) {
+                    color: #6a91c6;
+                }
+
+                .xhList_search li .alist a:nth-child(3) {
+                    color: #ff6400;
+                    border: 0;
+                }
+
+            .xhList_search li .alist em {
+                display: inline-block;
+                margin: 0 5px 0 0;
+                background: url(http://static5.baihe.com/images/newH5/xhNavIcon.png) no-repeat;
+                background-size: 100% auto;
+                vertical-align: middle;
+            }
+
+            .xhList_search li .alist a:nth-child(1) em {
+                width: 17px;
+                height: 17px;
+                background-position: 0 0;
+            }
+
+            .xhList_search li .alist a:nth-child(2) em {
+                width: 17px;
+                height: 15px;
+                background-position: 0 -17px;
+            }
+
+            .xhList_search li .alist a:nth-child(3) em {
+                width: 17px;
+                height: 14px;
+                background-position: 0 -32px;
+            }
+
+                .xhList_search li .alist a:nth-child(3) em.alove {
+                    width: 17px;
+                    height: 14px;
+                    background-position: 0 -46px;
+                }
+</style>
+
+
+<!--<div class="search_list_class" id="searchList" style="display: block;">
+    <!--<div class="tiaojList" id="search_topSearchConditionDiv"><a href="javascript:;" id="search_showSearchPageA">交友条件<em>箭头</em></a><span>年龄:22-33岁</span><span>身高:147-167厘米</span></div>-->
+
+
+
+    <div class="recommed_con" id="search_userListContainerDiv">
+        <div class="btn-group">
+            <a class="btn btn-primary" ui-sref-active="active"  ng-click="sexFilter(3)">全部</a> <a class="btn btn-primary" ng-click="sexFilter(1)">男</a> <a class="btn btn-primary" ng-click="sexFilter(2)">女</a>
+        </div>
+        <div style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+            <ul class="xhList_search" id="search_userListUl">
+                <li userid="140943679" ng-repeat="x in NAMES" data-id="{{x.UID}}" ng-click="href(this)" >
+                    <dl>
+                        <dt style="vertical-align:middle;"><a href="javascript:;" class="  "><img src="{{x.IMG}}" width="150" height="150"></a></dt>
+                        <dd>
+                            <p style="font-size:14px;">
+                                <a href="javascript:;" class="goToProfileA">{{ x.NAME }}&nbsp;{{ x.SEX }}</a>
+                            </p>
+                            <p style="font-size:14px;">
+                                <a href="javascript:;" class="goToProfileA">{{ x.DATA }}</a>
+                            </p>
+                            <p style="font-size:14px;">
+                                <a href="javascript:;" class="goToProfileA">籍贯：{{x.PLACE}}</a>
+                            </p>
+                            <p style="font-size:14px;">
+                                <a href="javascript:;" class="goToProfileA">身高：{{x.HEIGHT}}</a>
+                            </p>
+                            <p style="font-size:14px;">
+                                <a href="javascript:;" class="goToProfileA">毕业院校：{{x.SCHOOL}}</a>
+                            </p>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <div class="text-center" style=" padding-bottom:30px;">
+                <button class="load-more btn btn-default" type="button" style="{{showloadingStyle}}">
+                    <i class="fa fa-circle-o-notch fa-spin " data-reactid=".0.0.3.0.0"></i>
+                </button>
+                <button class="load-more btn btn-default" type="button" style="{{noShowloadingStyle}}">
+                    <span ng-click="loadMore()">  {{ContextText}}</span>
+                </button>
+            </div>
+
+            <!--<div id="pullUp" style="">
+                <span class="pullUpIcon"></span><span class="pullUpLabel" id="search_pullUpSpan">上划加载更多...</span>
+            </div>-->
+        </div>
+    </div>

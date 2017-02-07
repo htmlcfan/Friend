@@ -1,0 +1,5 @@
+E:\Project\Friend\Lib\DBUtility.dll
+E:\Project\Friend\Lib\DBUtility.pdb
+E:\Project\Friend\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+E:\Project\Friend\DBUtility\obj\Debug\DBUtility.dll
+E:\Project\Friend\DBUtility\obj\Debug\DBUtility.pdb

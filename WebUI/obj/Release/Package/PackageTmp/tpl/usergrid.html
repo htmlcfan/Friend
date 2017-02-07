@@ -1,0 +1,33 @@
+
+
+
+<div class="container-fluid" ng-app="myApp">
+    <div class="btn-group margin-bottom col-xs-4">
+        <button ui-sref-active="active" type="button" class="btn btn-primary" ng-click="sexFilter(1)">男</button>
+        <button ui-sref-active="active" type="button" class="btn btn-danger" ng-click="sexFilter(2)">女</button>
+    </div>
+    <div class="col-xs-8 col-sm-6 pull-right">
+        <div class="row">
+            <label class="col-sm-3 col-xs-3">最小年龄</label><input type="text" ng-model="min" class="col-sm-2 col-xs-3 pull-left"/>
+            <label class="col-sm-3 col-xs-3">最大年龄</label><input type="text" ng-model="max" class="col-sm-2 col-xs-3 pull-left"/>
+            <button class="btn btn-primary col-sm-12 col-xs-12 margin-bottom" ng-click="ageFilter()">筛选</button>
+        </div>
+
+    </div>
+    <table class="col-sm-12 table table-striped">
+        <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        </tr>
+        <tr ng-repeat="x in NAMES | filter:{SEX: sex}" data-id="{{x.UID}}" ng-click="href(this)" ng-show="x.if">
+            <td>{{ x.NAME }}</td>
+            <td>{{ x.SEX }}</td>
+            <td>{{x.DATA}}</td>
+        </tr>
+    </table>
+
+</div>
+
+
+

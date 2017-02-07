@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_Index_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) { // enter 键
+            Login();
+        }
+    }
+
+    function Login()
+    {
+        if ($('#name').val() == '')
+        {
+            $.messager.alert("系统提示！", "请输入用户名");
+            return;
+        }
+        if ($('#password').val() == '') {
+            $.messager.alert("系统提示！", "请输入密码");
+            return;
+        }
+
+        $.get(bgAdmin+"/Gate/CheckUser?r=" + Math.random(), { name: $('#name').val(), password: $('#password').val() }, function (data) {
+            var jsonData = eval("("+data+")");
+            if (jsonData.success) {
+                top.location.href = bgAdmin+'/Home/Index/';
+            }
+            else {
+                $.messager.alert("系统提示！", "登录失败");
+            }
+        });
+    }
+
+</script>
+
+
+<div style="margin-left:35%; margin-top:200px;">
+    <div id="w" class="easyui-panel" title="管理员登录" style="width: 400px; padding: 20px 70px 20px 70px;">
+        <div style="margin-bottom:10px">
+            <input class="easyui-textbox" id="name" style="width:100%;height:30px;padding:12px" data-options="prompt:'用户名',iconCls:'icon-user',iconWidth:20">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="password" type="password" style="width:100%;height:30px;padding:12px" data-options="prompt:'登录密码',iconCls:'icon-lock',iconWidth:20">
+        </div>
+        <div>
+            <a href="javascript:;" onclick="Login()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:100%;">
+                <span style="font-size:14px;">登录</span>
+            </a>
+        </div>
+    </div>
+</div>
+
